@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXT GAMING | Play. Compete. Dominate.</title>
+<style>
+:root{--bg:#080b16;--panel:#11182b;--muted:#aab4cc;--blue:#36d7ff;--purple:#9b62ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0%,#202052 0,transparent 35%),var(--bg);color:#f5f7ff;font-family:Arial,sans-serif}
+header{position:sticky;top:0;background:#080b16eF;border-bottom:1px solid #27314b;padding:16px 5%;display:flex;justify-content:space-between;align-items:center;z-index:5}
+.logo{font-weight:900;font-size:25px;letter-spacing:2px}.logo span{color:var(--blue)}nav a{color:#dce5ff;text-decoration:none;margin-left:20px}
+.hero{padding:75px 6% 55px;background:linear-gradient(110deg,#111b36dd,#28134ddd),url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1800&q=80') center/cover}
+.hero h1{font-size:clamp(42px,7vw,76px);margin:0 0 12px}.hero h1 span{color:var(--blue)}.hero p{color:#d1d8ee;font-size:18px;max-width:650px;line-height:1.6}
+.btn{display:inline-block;background:linear-gradient(90deg,var(--blue),var(--purple));color:#07101e;padding:13px 22px;border-radius:9px;text-decoration:none;font-weight:800;border:0;cursor:pointer}
+main{padding:35px 5%}.section-title{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}h2{font-size:27px}.muted{color:var(--muted)}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.controls input,.controls select{background:#11182b;border:1px solid #35415f;color:white;padding:12px;border-radius:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:17px}.game{background:linear-gradient(150deg,#17213a,#101525);border:1px solid #293654;border-radius:14px;overflow:hidden}.art{height:125px;display:grid;place-items:center;font-size:45px;background:linear-gradient(135deg,#17415c,#42256d)}.game-body{padding:15px}.game h3{margin:0 0 7px}.game p{color:var(--muted);font-size:14px;min-height:36px}.tag{font-size:11px;color:#9feaff;text-transform:uppercase;letter-spacing:1px}.featured{border-color:#4a9db8}
+.about{margin-top:45px;background:#11182b;border:1px solid #293654;padding:25px;border-radius:14px;line-height:1.7}.about strong{color:var(--blue)}
+footer{text-align:center;padding:28px;color:var(--muted);border-top:1px solid #27314b}
+@media(max-width:600px){nav{display:none}.hero{padding:55px 6%}.hero p{font-size:16px}}
+</style>
+</head>
+<body>
+<header><div class="logo">NEXT <span>GAMING</span></div><nav><a href="#games">Games</a><a href="#featured">Featured</a><a href="#about">About</a></nav></header>
+<section class="hero">
+  <div class="tag">YOUR FREE GAMING HUB</div>
+  <h1>PLAY. <span>COMPETE.</span><br>DOMINATE.</h1>
+  <p>Discover browser-game concepts, race into new worlds, challenge friends and explore the NEXT GAMING collection.</p>
+  <a class="btn" href="#games">EXPLORE GAMES</a>
+</section>
+<main>
+<section id="featured">
+  <div class="section-title"><h2>Featured NEXT Games</h2><span class="muted">Our original game concepts</span></div>
+  <div class="grid" id="featuredGrid"></div>
+</section>
+<section id="games" style="margin-top:42px">
+  <div class="section-title"><h2>Game Library</h2><span class="muted" id="count"></span></div>
+  <div class="controls"><input id="search" type="search" placeholder="Search games..." aria-label="Search games"><select id="category" aria-label="Filter category"><option value="All">All categories</option></select></div>
+  <div class="grid" id="gameGrid"></div>
+</section>
+<section class="about" id="about">
+  <h2>About This Website</h2>
+  <p><strong>NEXT GAMING</strong> is a free gaming website concept made for players who enjoy racing, action, adventure, sports, puzzles and multiplayer experiences.</p>
+  <p><strong>Created by Mandeep Viper.</strong></p>
+  <p class="muted">This is an early website prototype. The cards are a game catalogue, not playable game builds yet. Online multiplayer, user accounts, leaderboards and actual games must be developed and connected before those features work. Some high-end 3D and multiplayer features may require paid server resources at scale.</p>
+</section>
+</main>
+<footer>© 2026 NEXT GAMING · PLAY • COMPETE • DOMINATE</footer>
+<script>
+const featured=[
+ ["NEXT RACING","3D car racing concept with cars, tracks, multiplayer races and leaderboards.","🏎️","Racing"],
+ ["NEXT STRIKE","Online team-battle shooter concept with maps and character customization.","🎯","Shooting"],
+ ["NEXT WORLD","Explore a 3D world, drive vehicles and roam freely.","🌎","Adventure"],
+ ["NEXT PARTY","Multiplayer mini-games and obstacle challenges with friends.","🎉","Party"]
+];
+const groups={
+"Racing":["Supercar Racing","Street Racing","Drift Challenge","Formula Racing","Bike Racing","Off-road Racing","Traffic Racer","Drag Racing","Rally Racing","Kart Racing","Truck Racing","City Driving","Highway Racing","Stunt Racing","Multiplayer Grand Prix"],
+"Shooting":["Arena Strike","Team Battle","Zombie Survival","Paintball Arena","Laser Tag","Space Blaster","Robot Battle","Target Challenge","Capture the Flag","Battle Arena","Alien Defense","Multiplayer Showdown"],
+"Adventure":["Jungle Quest","Treasure Hunt","Mystery Island","Sky Adventure","Dungeon Explorer","Lost World","Space Explorer","Forest Run","Pirate Quest","Escape Island"],
+"Sports":["Football","Cricket","Basketball","Tennis","Volleyball","Badminton","Table Tennis","Golf","Pool","Bowling"],
+"Action":["Parkour","Ninja Run","Superhero Quest","Platform Jump","Robot Escape","Obstacle Race","Tower Climb","Sky Jump","Shadow Runner","Survival Challenge"],
+"Simulation":["City Bus Simulator","Truck Simulator","Flight Simulator","Train Simulator","Farming Simulator","Police Driving","Parking Master","Construction Simulator"],
+"Strategy":["Chess","Checkers","Tower Defense","Kingdom Builder","Battle Tactics","Naval Strategy","Castle Defense","Mini Army"],
+"Puzzle":["Match 3","Sudoku","Block Puzzle","2048","Maze Escape","Memory Match","Word Puzzle","Color Sort"],
+"Party":["Party Dash","Team Trivia","Obstacle Party","Color Arena","Hide and Seek","Musical Tiles","Mini Golf Party","Friend Race"],
+"Arcade":["Pixel Jump","Space Invaders Style","Brick Breaker","Classic Snake","Bubble Pop","Endless Runner","Retro Shooter","Pinball"],
+"Board":["Ludo","Dominoes","Mancala","Four in a Row","Checkers Plus","Word Board"],
+"Casual":["Idle Builder","Farm Match","Pet Care","Stack Tower","Bottle Flip","Daily Solitaire","Bubble Shooter","Tile Match"]
+};
+const icons={Racing:"🏁",Shooting:"🎮",Adventure:"🧭",Sports:"🏆",Action:"⚡",Simulation:"🚍",Strategy:"♟️",Puzzle:"🧩",Party:"🎉",Arcade:"🕹️",Board:"🎲",Casual:"🌟"};
+const all=[];
+Object.entries(groups).forEach(([cat,names])=>names.forEach(name=>all.push({name,cat,desc:`${cat} game concept for the NEXT GAMING collection.`})));
+featured.forEach(([name,desc,icon,cat])=>all.unshift({name,desc,icon,cat,featured:true}));
+function card(g){return `<article class="game ${g.featured?'featured':''}"><div class="art">${g.icon||icons[g.cat]||"🎮"}</div><div class="game-body"><div class="tag">${g.cat}${g.featured?' · FEATURED':''}</div><h3>${g.name}</h3><p>${g.desc}</p><span class="muted">Coming soon</span></div></article>`}
+document.getElementById("featuredGrid").innerHTML=featured.map(([name,desc,icon,cat])=>card({name,desc,icon,cat,featured:true})).join("");
+const cats=Object.keys(groups);document.getElementById("category").innerHTML+=[...cats].map(c=>`<option>${c}</option>`).join("");
+function render(){const q=document.getElementById("search").value.toLowerCase(),c=document.getElementById("category").value;const items=all.filter(g=>(c==="All"||g.cat===c)&&(g.name.toLowerCase().includes(q)||g.desc.toLowerCase().includes(q)));document.getElementById("gameGrid").innerHTML=items.map(card).join("")||'<p class="muted">No games found.</p>';document.getElementById("count").textContent=`${items.length} games shown · ${all.length} catalogue entries`}
+document.getElementById("search").addEventListener("input",render);document.getElementById("category").addEventListener("change",render);render();
+</script>
+</body>
+</html>
